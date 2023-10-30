@@ -44,7 +44,7 @@ class animation:
                 self.disi = 0
             self.i = 0
     def render(self):
-        x = 16*self.disi
+        x = self.cellw*self.disi
         self.win.blit(self.image,self.ipos,(x,0,self.celsiz.x,self.celsiz.y))
 
 
