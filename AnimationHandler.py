@@ -23,7 +23,7 @@ class animation:
 
     def addState(self,animationStat):
         self.states.append(animationStat)
-    
+
     def setState(self,stateName):
         for frame in self.states:
             if frame.state == stateName:
