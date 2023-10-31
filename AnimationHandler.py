@@ -1,13 +1,26 @@
 import pygame as py
 
 class animationState:
-    def __init__(self,state,frames,startpos,frameDur,celSiz,image):
+    def __init__(self,
+                 state,
+                 frames,
+                 startpos,
+                 frameDur,
+                 celSiz,
+                 image,
+                 spacing = 0,
+                 offset = 0
+                 ):
+        
         self.state = str(state)
         self.frames = int(frames)
         self.image = image
         self.celSiz = py.Vector2(celSiz)
         self.frameDur = frameDur
         self.startpos = py.Vector2(startpos)
+        self.spacing = spacing
+        self.offset = offset
+
 
 class animation:
     def __init__(self,win):
@@ -35,6 +48,8 @@ class animation:
                 self.image = frame.image
                 self.frames = frame.frames
                 self.frameDur = frame.frameDur
+                self.offset = frame.offset
+                self.spacing = frame.spacing
 
     def changeFrame(self):
         self.i += 1
@@ -44,7 +59,7 @@ class animation:
                 self.disi = 0
             self.i = 0
     def render(self):
-        x = self.cellw*self.disi
+        x = self.cellw*self.disi + (self.disi*self.spacing) + self.offset
         self.win.blit(self.image,self.ipos,(x,0,self.celsiz.x,self.celsiz.y))
 
 
